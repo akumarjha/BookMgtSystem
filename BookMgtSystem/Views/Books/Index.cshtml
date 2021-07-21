@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BookMgtSystem.Models.Book>
+
+@{
+    ViewBag.Title = "Books List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Authors List</h2>
+
+<div style="padding:10px;">
+    @Html.ActionLink("Add Book", "Create", "", new { @class = "btn btn-primary" })
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

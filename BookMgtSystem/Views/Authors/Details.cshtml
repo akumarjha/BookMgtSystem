@@ -1,0 +1,60 @@
+﻿@model BookMgtSystem.Models.AuthorsViewModel
+
+@{
+    ViewBag.Title = "Author Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Author Details</h2>
+
+<div class="card">
+    <div class="card-header" style="text-align:center">
+        Author Details
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.FirstName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LastName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DateOfBirth)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Books)
+                </th>
+                <td>
+                    @foreach (var item in Model.Books)
+                    {
+                        if (item.Checked)
+                        {
+                            <div>@item.Name</div>
+                        }
+                    }
+                </td>
+            </tr>    
+        </table>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-primary" })
+</div>

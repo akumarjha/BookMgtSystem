@@ -1,0 +1,30 @@
+﻿@model BookMgtSystem.Models.Book
+
+@{
+    ViewBag.Title = "Book Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Book Details</h2>
+
+<div class="card">
+    <div class="card-header" style="text-align:center">
+        Book Details
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-primary" })
+</div>

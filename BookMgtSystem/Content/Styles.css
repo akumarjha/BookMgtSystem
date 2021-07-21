@@ -1,0 +1,17 @@
+﻿body {
+}
+
+h2 {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/*container {
+    border-radius: 20px;
+}*/
+
+a {
+    text-decoration: none;
+}

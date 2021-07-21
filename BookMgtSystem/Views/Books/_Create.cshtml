@@ -1,0 +1,23 @@
+﻿@model BookMgtSystem.Models.Book
+
+
+<script>
+</script>
+
+<form>
+    <div>
+        <h3>Create Book</h3>
+        <hr />
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div>
+            <input id="btnSubmit" class="btn btn-primary" type="submit" value="Create Book" />
+            @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</form>

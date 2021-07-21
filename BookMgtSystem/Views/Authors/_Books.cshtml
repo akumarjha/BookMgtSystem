@@ -1,0 +1,20 @@
+﻿@model BookMgtSystem.Models.AuthorsViewModel
+
+<div class="form-group row">
+    @Html.LabelFor(model => model.Books, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @for (int i = 0; i < Model.Books.Count(); i++)
+        {
+            <div class="form-check form-check-inline">
+                @Html.EditorFor(m => Model.Books[i].Checked, new { @class = "form-check-input" })
+                @Html.DisplayFor(m => Model.Books[i].Name, new { @class = "form-check-label" })
+
+                @Html.HiddenFor(m => Model.Books[i].Name)
+                @Html.HiddenFor(m => Model.Books[i].Id)
+            </div>
+        }
+        <div>
+            <a class="btn btn-primary" href="#addBook1" data-toggle="modal">Add Book</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model BookMgtSystem.Models.AuthorsViewModel
+
+@{
+    ViewBag.Title = "Create Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Create New Author</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <form>
+        <div>
+            <h3>Create Author</h3>
+            <hr />
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FirstName, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.LastName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastName, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.DateOfBirth, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateOfBirth, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.Partial("_Books")
+            @*<div class="form-group row">
+                @Html.LabelFor(model => model.Books, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @for (int i = 0; i < Model.Books.Count(); i++)
+                    {
+                        <div class="form-check form-check-inline">
+                            @Html.EditorFor(m => Model.Books[i].Checked, new { @class = "form-check-input" })
+                            @Html.DisplayFor(m => Model.Books[i].Name, new { @class = "form-check-label" })
+
+                            @Html.HiddenFor(m => Model.Books[i].Name)
+                            @Html.HiddenFor(m => Model.Books[i].Id)
+                        </div>
+                    }
+                    <div>
+                        <a class="btn btn-primary" href="#addBook1" data-toggle="modal">Add Book</a>
+                    </div>
+                </div>
+            </div>*@
+
+
+            <div style="padding:10px;">
+                <input class="btn btn-primary" type="submit" value="Create" />
+                @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </form>
+}
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

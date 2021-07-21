@@ -1,0 +1,35 @@
+﻿@model BookMgtSystem.Models.Book
+
+@{
+    ViewBag.Title = "Edit Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Book</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <form>
+        <div>
+            <h3>Edit Book</h3>
+            <hr />
+        </div>
+        @Html.HiddenFor(model => model.BookId)
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <input class="btn btn-primary" type="submit" value="Save" />
+        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-primary" })
+    </div>
+}
+

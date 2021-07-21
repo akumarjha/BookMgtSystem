@@ -1,0 +1,148 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
+
+    <style>
+        h2 {
+            background-color: darkgray;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111111;
+        }
+
+        #footer { 
+            background-color: darkgray; 
+            padding: 20px;
+            border-radius: 20px;
+            margin-top:350px;
+        }
+        #header {
+            padding-top:10px;
+            border-radius:20px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DateOfBirth').datepicker({
+                dateFormat: "yy/mm/dd"
+            });
+        })
+
+        $(document).ready(function () {
+            $('#submitBook').click(function () {
+                var title = $('#Title').val();
+                var obj ={
+                    Title:title
+                }
+                if (obj != null) {
+                    $.ajax({
+                        url: '/Books/Create',
+                        method: 'POST',
+                        data: obj,
+                        success: function (data) {
+                        },
+                        error: function (err) {
+                            console.log('err' + err);
+                        }
+                    })
+                }
+                debugger;
+                $('#addBook1').hide();
+                $.ajax({
+                    url: '/Authors/Create',
+                    method: 'GET',
+                    success: function (data) {
+                    },
+                    error: function (err) {
+                        console.log('err' + err);
+                    }
+                })
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <ul>
+                <li>
+                    @Html.ActionLink("Authors", "Index", "Authors")
+                </li>
+                <li>
+                    @Html.ActionLink("Books", "Index", "Books")
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>@RenderBody()</h3>
+        </div>
+        <div id="footer">
+            <h3 style="text-align:center">&#169; to Ashutosh Jha </h3>
+        </div>
+    </div>
+
+    @*<button data-toggle="modal" data-target="#login">Login</button>*@
+
+    <div class="modal fade" id="addBook1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h4>Create Book</h4>
+                    <button data-dismiss="modal" class="close">x</button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Title</dt>
+                        <dd><input id="Title" type="text"></dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitBook">Add</button>
+                    <button data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
