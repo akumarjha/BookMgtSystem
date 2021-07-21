@@ -15,14 +15,14 @@ namespace BookMgtSystem
 
             routes.MapRoute(
                 name: "Book",
-                url: "Book/Index",
+                url: "Books/Index",
                 defaults: new { controller = "Book", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Author",
-                url: "Author/AddBooks",
-                defaults: new { controller = "Author", action = "AddBooks", id = UrlParameter.Optional }
+                url: "Authors/Create",
+                defaults: new { controller = "Authors", action = "Create", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Default",
